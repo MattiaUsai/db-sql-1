@@ -46,3 +46,97 @@ FROM
     `courses`
 WHERE
     `year` = 1 AND `period` = 'I semestre';
+
+
+
+#  TUTTI GLI APELLI DI ESAME CHE AVVENGONO DOPO LE 14 IL 20/06/2020
+
+
+SELECT
+    *
+FROM
+    `exams`
+WHERE
+    `date` = '2020-06-20' AND TIME(`hour`) > TIME("14:00:00");
+
+
+
+
+#  CORSI DI LAUREA MAGISTRALE 
+
+SELECT
+    *
+FROM
+    `degrees`
+WHERE
+    `level` = 'magistrale';
+
+
+
+
+#  NUMERO DI DIPARTIMENTI
+
+SELECT
+    COUNT(`id`)
+FROM
+    `departments`;
+
+
+
+
+#  INSEGNANTI CON UN NUMERO DI TELEFONO
+
+
+SELECT
+    *
+FROM
+    `teachers`
+WHERE
+    `phone` IS NOT NULL;
+
+
+#  INSERT MY DATA STUDENT 
+
+
+INSERT INTO `students`(   
+    `degree_id`,
+    `name`,
+    `surname`,
+    `date_of_birth`,
+    `fiscal_code`,
+    `enrolment_date`,
+    `registration_number`,
+    `email`
+)
+VALUES(
+    75,
+    'Mattia',
+    'Usai',
+    '2003-04-05',
+    'SUAMTT03D05E441P',
+    '2020-09-20',
+    '3317387257',
+    'usai.mattia.05.04.2003@gmail.com'
+)
+
+
+
+
+# UPDATE OFFICE-NUMBER PIETRO RIZZO 
+
+UPDATE
+    `teachers`
+SET
+    `office_number` = 126
+WHERE
+    `name` = 'Pietro' AND `surname` = 'Rizzo';
+
+
+# DELETE MY DATA STUDENT FROM STUDENTS 
+
+
+DELETE
+FROM
+    `students`
+WHERE
+    `fiscal_code` = 'SUAMTT03D05E441P';
